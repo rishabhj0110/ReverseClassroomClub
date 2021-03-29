@@ -1,0 +1,5 @@
+Website is based on Django,Python,postgresql,html,css,bootstrap
+numpy,pillow,pyscopg2 should be install using pip
+rcd is the database name database should be added to Postgresql.
+
+after setting up everything ,start the server

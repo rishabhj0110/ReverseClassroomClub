@@ -1,0 +1,569 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from preview.colorlib.com/theme/startup2/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Jan 2021 05:12:44 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Reverse Classroom</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{%static 'styles.css' %}">
+</head>
+<body>
+<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+<header>
+<div class="header-area ">
+<div id="sticky-header" class="main-header-area">
+<div class="container-fluid p-0">
+<div class="row align-items-center no-gutters">
+<div class="col-xl-2 col-lg-2">
+<div class="logo-img">
+<a href="/home/">
+<img src="{% static 'img/banner/2.png' %}" alt="">
+</a>
+</div>
+</div>
+<div class="col-xl-8 col-lg-8">
+<div class="main-menu  d-none d-lg-block text-center">
+<nav>
+<ul id="navigation">
+<li><a class="active" href="/home/">home</a></li>
+<li><a href="/about/">About Us</a></li>
+<li><a href="/events/">Events/Courses<i class="ti-angle-down"></i></a>
+<ul class="submenu">
+<li><a href="/workshop/">Workshops//Events</a></li>
+<li><a href="/courses/">Courses/Tutions</a></li>
+<li><a href="/ngo/">NGO Tie-Up</a></li>
+</ul>
+</li>
+{% if user.is_authenticated %}
+				<li><a href="/profile/">Profile</a></li>
+{% else %}
+<li><a href="/signuplogin/">Signup/Login <i class="ti-angle-down"></i></a>
+<ul class="submenu">
+<li><a href="/signup/">Signup</a></li>
+<li><a href="/login/">Login</a></li>
+</ul>
+</li>
+{% endif %}
+{% comment %} <li><a href="#">blog <i class="ti-angle-down"></i></a>
+<ul class="submenu">
+<li><a href="blog.html">blog</a></li>
+<li><a href="single-blog.html">single-blog</a></li>
+</ul>
+</li> {% endcomment %}
+<li><a href="/instructor/">Be a instructor</a></li>
+<li><a href="/contact/">Contact</a></li>
+{% if user.is_authenticated %}
+				<li><a href="/logout/">Logout</a></li>
+{% endif %}
+</ul>
+</nav>
+</div>
+</div>
+<div class="col-lg-2 d-none d-lg-block">
+<div class="log_chat_area d-flex align-items-end">
+{% comment %} <a href="/logout/" target="_black" class="say_hi">Say Hello</a> {% endcomment %}
+</div>
+</div>
+<div class="col-12">
+<div class="mobile_menu d-block d-lg-none"></div>
+</div>
+</div>
+ </div>
+</div>
+</div>
+</header>
+
+
+
+<div class="bradcam_area breadcam_bg_3">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="bradcam_text">
+<h3>About Us</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% if user.is_authenticated and user.userprofile.utype == "admin" %}
+<h1>first,Logout from Admin User Account </h1>
+{% else %}
+<div class="team_area ">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-6">
+<div class="section_title text-center mb-90">
+<h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Our Creative Team</h3>
+<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">Introducing our whole team along with their positions and social connecting links.</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="team_thumb">
+<img src="{% static 'img/10.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://instagram.com/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto;nida@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Prof. Nida Bakereywala</h3>
+<p>Faculty Advisor</p>
+ </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+<div class="team_thumb">
+<img src="{% static 'img/7.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://instagram.com/niharikaa_mehtaa?igshid=1e3oy33r1wfss"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/niharika-mehta-491740169"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:Niharika1528@gmail.com"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Niharika Mehta</h3>
+<p>Director</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+<div class="team_thumb">
+<img src="{% static 'img/1.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://instagram.com/_aadi_u?igshid=1xy3lfwzo5ocx"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/aditya-umalkar-b4200218a"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:aditya.umalkar@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Aditya Umalkar</h3>
+<p>Secretary</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">
+<div class="team_thumb">
+<img src="{% static 'img/3.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/bilalsani_1011/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/bilal-sani-5579b2185/"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:bilal.sani@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Bilal Sani</h3>
+<p>Joint Secretary</p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="team_thumb">
+<img src="{% static 'img/9.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/vedantjolly2808/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/vedant-jolly-bb95991b0"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:vedant.jolly@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Vedant Jolly</h3>
+<p>Technical Head</p>
+ </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+<div class="team_thumb">
+<img src="{% static 'img/17.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/rishabhjain0110/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/rishabhjainrj0110"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:rishabhjain@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Rishabh Jain</h3>
+<p>Technical Head</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+<div class="team_thumb">
+<img src="{% static 'img/15.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/nikhil_dewoolkar/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/nikhil-dewoolkar-2b738b1b1"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:nikhil.dewoolkar@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Nikhil Dewoolkar</h3>
+<p>Technical Head / Student Advisor</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">
+<div class="team_thumb">
+<img src="{% static 'img/14.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/_omkar_shinde_/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/omkar-shinde-569606178"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:omkar.shinde@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Omkar Shinde</h3>
+<p>Head of Public Relation</p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="team_thumb">
+<img src="{% static 'img/13.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://instagram.com/__.shreya_shetty.__?igshid=13w6hbtebiqn6"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/shreya-shetty-2240431b6"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:shreya.shetty@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Shreya Shetty</h3>
+<p>Head of Graphic Design</p>
+ </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+<div class="team_thumb">
+<img src="{% static 'img/11.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/shahid_ms10/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/shahid-shaikh-987a861a0"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:shahid.shaikh@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Shahid Shaikh</h3>
+<p>Head of Graphic Design</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+<div class="team_thumb">
+<img src="{% static 'img/4.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/netal_asawa166/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="http://www.linkedin.com/in/netal-asawa-5112601a1"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:netal.asawa@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Netal Asawa</h3>
+<p>Head of Marketing</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">
+<div class="team_thumb">
+<img src="{% static 'img/2.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/sakshi_gadegaonkar/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/sakshi-gadegaonkar-b010691a7"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:sakshi.gadegaonkar@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Sakshi Gadegaonkar</h3>
+<p>Head of Social Media</p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="team_thumb">
+<img src="{% static 'img/6.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://instagram.com/_shruti.shetty_?igshid=scejfyxethw8"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/shruti-shetty-63576b1b9"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:shruti.shetty@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Shruti Shetty</h3>
+<p>Head of Creative</p>
+ </div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+<div class="team_thumb">
+<img src="{% static 'img/8.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/vedant_kadhane/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/in/vedant-kadhane-5014741ba"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="mailto:vedant.kadhane@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>vedant Kadhane</h3>
+<p>Head of Social Responsibilities</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+<div class="team_thumb">
+<img src="{% static 'img/16.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/_anushkaagrawal_/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/mwlite/in/anushka-agrawal-988974200"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="anushka.agrawal@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Anushka Agrawal</h3>
+<p>Head of Content Curation</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="single_team wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s">
+<div class="team_thumb">
+<img src="{% static 'img/5.jpeg' %}" alt="">
+<div class="team_hover">
+<div class="hover_inner text-center">
+<ul>
+<li><a href="https://www.instagram.com/apuanilimaye?r=nametag"> <i class="fa fa-instagram"></i> </a></li>
+<li><a href="https://www.linkedin.com/"> <i class="fa fa-linkedin"></i> </a></li>
+<li><a href="apoorva.limaye@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="team_title text-center">
+<h3>Apoorva Limaye</h3>
+<p>Head of Operations</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
+<footer class="footer">
+<div class="footer_top">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-2 col-md-3">
+<div class="footer_logo wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
+  <a href="/home/">
+<img src="{% static 'img/banner/8.jpeg' %}" alt="">
+</a>
+</div>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-9">
+<div class="menu_links">
+<ul>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".2s" href="/home/">| home |</a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".4s" href="/about/">| About Us |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".6s" href="/event/">| Events/Courses |</a></li>
+{% if user.is_authenticated %}
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/profile/">| Profile |</a></li>
+{% else %}
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".8s" href="/signup/">| Signup |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1s" href="/login/">| Login |</a></li>
+{% endif %}
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/instructor/">| Be A Instructor |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/contact/">| Contact |</a></li>
+{% if user.is_authenticated%}
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/logout/">| Logout |</a></li>
+{% endif %}
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-12">
+<div class="socail_links">
+<ul>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" href="https://www.facebook.com/Reverse-Classroom-SPIT-103278271700626/"> <i class="fa fa-facebook"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" href="https://www.twitter.com/ReverseClassroom"> <i class="fa fa-twitter"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s" href="https://www.instagram.com/reverse_class_spit/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s" href="mailto:reverse.classroom@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% comment %} <div class="copy-right_text">
+<div class="container">
+<div class="footer_border"></div>
+<div class="row">
+<div class="col-xl-12"> 
+ <p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
+
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+
+</p> 
+</div>
+</div>
+</div>
+</div> {% endcomment %}
+<div class="copy-right_text">
+<div class="container">
+<div class="footer_border"></div>
+<div class="row">
+<div class="col-xl-12">
+<p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
+
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>,Reverse Classroom Club. All rights reserved | Developed by <a href="https://www.linkedin.com/in/nikhil-dewoolkar-2b738b1b1/" target="_blank">Nikhil Dewoolkar</a>
+
+</p> 
+</div>
+</div>
+</div>
+</div> 
+</div>
+</footer>
+
+
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="{% static 'js/ajax-form.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/gijgo.min.js' %"></script>
+
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script async src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-23581568-13' %}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+</body>
+
+</html>

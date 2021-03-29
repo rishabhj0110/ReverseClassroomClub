@@ -1,0 +1,661 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from preview.colorlib.com/theme/startup2/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Jan 2021 05:12:44 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Reverse Classroom</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{%static 'styles.css' %}">
+</head>
+<body>
+<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+<header>
+<div class="header-area ">
+<div id="sticky-header" class="main-header-area">
+<div class="container-fluid p-0">
+<div class="row align-items-center no-gutters">
+<div class="col-xl-2 col-lg-2">
+<div class="logo-img">
+<a href="/home/">
+<img src="{% static 'img/banner/2.png' %}" alt="">
+</a>
+</div>
+</div>
+<div class="col-xl-8 col-lg-8">
+<div class="main-menu  d-none d-lg-block text-center">
+<nav>
+<ul id="navigation">
+<li><a href="/adminhome">Home</a></li>
+<li><a href="/adminemail/">Email System</a></li>
+<li><a href="/admintrack/">Tracking Data</a></li>
+<li><a href="/adminevent/">CRUD Events/Courses/NGO</a></li>
+<li><a href="/adminenroll/">Enrollment</a></li>
+{% if user.is_authenticated %}
+<li><a href="/logout/">Logout</a></li>
+{% endif %}
+</ul>
+</nav>
+</div>
+</div>
+<div class="col-lg-2 d-none d-lg-block">
+<div class="log_chat_area d-flex align-items-end">
+{% comment %} <a href="/logout/" target="_black" class="say_hi">Say Hello</a> {% endcomment %}
+</div>
+</div>
+<div class="col-12">
+<div class="mobile_menu d-block d-lg-none"></div>
+</div>
+</div>
+ </div>
+</div>
+</div>
+</header>
+
+
+
+<div class="bradcam_area breadcam_bg_3">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="bradcam_text">
+<h3>Admin</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% if user.is_authenticated and user.userprofile.utype == "admin" %}
+<h1>Admin Event</h1>
+<form action="/adminevent/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="container">
+    <h1>{{user.username}}</h1>
+    <p>Please Select from following options.</p>
+	<label for="id">Choose relavant option:</label>
+<select id="id" name="id">
+  <option value="0">- - - - - - - -</option>
+  <option value="1">Show Workshops/Events</option>
+  <option value="2">Create Workshop/Event</option>
+  <option value="3">Edit Workshop/Event</option>
+  <option value="4">Delete Workshop/Event</option>
+  <option value="5">Show Courses/Tutions</option>
+  <option value="6">Create Courses/Tutions</option>
+  <option value="7">Edit Courses/Tutions</option>
+  <option value="8">Delete Courses/Tutions</option>
+  <option value="9">Show NGO</option>
+  <option value="10">Create NGO</option>
+  <option value="11">Edit NGO</option>
+  <option value="12">Delete NGO</option>
+</select>
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Enter</button>
+    </div>
+	</div>
+</form>
+<hr>
+{% if id == 0 %}
+<hr>
+<center><h1>select option to get information....<h1><center>
+<br/>
+<hr>
+{% endif %}
+{% if id == 1 %}
+<hr>
+<center><h1>Workshop/Event<h1><center>
+<hr>
+  {% for n in n %}
+  <p>
+      Title:-{{n.etitle}}<br>
+      description:-{{n.edesc}}<br>
+      Document Link:-{{n.edoclink}}<br>
+      Instructor:-{{n.einame}}<br>
+      Instructor description:-{{n.eidesc}}<br>
+      InstructorLink:-{{n.eilink}}<br>
+      Date:-{{n.edate}}<br>
+      Time:-{{n.etime}}<br>
+      ApplyLink:-{{n.eapply}}<br>
+    </p>
+    {% endfor %}
+<hr>
+{% endif %}
+{% if id == 2 %}
+<hr>
+<form action="/addworkshop/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Create Event<h1><center>
+    <p>Please fill in this form to Create new Event.</p>
+	<hr>
+  <div class="form-control">
+    </br></br>
+    <label for="fname">Event Title:-</label>
+    <input type="text"  name="etitle" placeholder="Enter Event Title" required >
+	  <label for="lname">Event description:-</label>
+    <input type="text"  name="edesc" placeholder="Enter Event description" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="edoclink" placeholder="Event Documentation Link" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="einame" placeholder="Enter Instructor Name" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="eidesc" placeholder="Enter Instructor description" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="eilink" placeholder="Enter Instructor Profile Link" required>
+  <label for="exp">Event Date:-</label>
+  <input type="text" name="edate" placeholder="format:- (29-11-2020) " required>
+  <label for="exp">Event Time:-</label>
+  <input type="text" name="etime" placeholder="format:- (10am to 4 pm)" required>
+  <label for="exp">Apply Link:-</label>
+  <input type="text" name="eapply" placeholder="Apply Google Excel Sheet Link" required>
+<br><br><br>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 3 %}
+<hr>
+<form action="/upworkshop/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Update Event<h1><center>
+    <p>Please fill in this form to Update Event data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.etitle}}">{{n.etitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+	<label for="lname">Event description:-</label>
+    <input type="text"  name="edesc" value="{{n.edesc}}" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="edoclink" value="{{n.edoclink}}" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="einame" value="{{n.einame}}" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="eidesc" value="{{n.eidesc}}" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="eilink" value="{{n.eilink}}" required>
+  <label for="exp">Event Date:-</label>
+  <input type="text" name="edate" value="{{n.edate}}" required>
+  <label for="exp">Event Time:-</label>
+  <input type="text" name="etime" value="{{n.etime}}" required>
+  <label for="exp">Apply Link:-</label>
+  <input type="text" name="eapply" placeholder="Apply Google Excel Sheet Link" required>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 4 %}
+<hr>
+<form action="/delworkshop/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Delete Event<h1><center>
+    <p>Please fill in this form to Delete Event data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.etitle}}">{{n.etitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+<hr>
+{% endif %}
+{% if id == 5 %}
+<hr>
+<center><h1>Courses/Tutions<h1><center>
+<hr>
+  {% for n in n %}
+  <p>
+      Title:-{{n.ctitle}}<br>
+      description:-{{n.cdesc}}<br>
+      Document Link:-{{n.cdoclink}}<br>
+      Instructor:-{{n.ciname}}<br>
+      Instructor description:-{{n.cidesc}}<br>
+      InstructorLink:-{{n.cilink}}<br>
+      Start Date:-{{n.csdate}}<br>
+      End Date:-{{n.cedate}}<br>
+      Time:-{{n.ctime}}<br>
+      ApplyLink:-{{n.capply}}<br>
+    </p> 
+    {% endfor %}
+<hr>
+{% endif %}
+{% if id == 6 %}
+<hr>
+<form action="/addcourses/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Create Event<h1><center>
+    <p>Please fill in this form to Create new Event.</p>
+	<hr>
+  <div class="form-control">
+    </br></br>
+    <label for="fname">Event Title:-</label>
+    <input type="text"  name="ctitle" placeholder="Enter Event Title" required >
+	  <label for="lname">Event description:-</label>
+    <input type="text"  name="cdesc" placeholder="Enter Event description" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="cdoclink" placeholder="Event Documentation Link" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="ciname" placeholder="Enter Instructor Name" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="cidesc" placeholder="Enter Instructor description" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="cilink" placeholder="Enter Instructor Profile Link" required>
+  <label for="exp">Event Start Date:-</label>
+  <input type="text" name="csdate" placeholder="format:- (29-11-2020) " required>
+  <label for="exp">Event End Date:-</label>
+  <input type="text" name="cedate" placeholder="format:- (29-12-2020) " required>
+  <label for="exp">Event Time:-</label>
+  <input type="text" name="ctime" placeholder="format:- (10am to 4 pm)" required>
+  <label for="exp">Apply Link:-</label>
+  <input type="text" name="capply" placeholder="Apply Google Excel Sheet Link" required>
+<br><br><br>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 7 %}
+<hr>
+<form action="/upcourses/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Update Courses<h1><center>
+    <p>Please fill in this form to Update Course data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.ctitle}}">{{n.ctitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+	  <label for="lname">Event description:-</label>
+    <input type="text"  name="cdesc" value="{{n.cdesc}}" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="cdoclink" value="{{n.cdoclink}}" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="ciname" value="{{n.ciname}}" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="cidesc" value="{{n.cidesc}}" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="cilink" value="{{n.cilink}}" required>
+    <label for="exp">Event Start Date:-</label>
+    <input type="text" name="csdate" value="{{n.csdate}}" required>
+    <label for="exp">Event End Date:-</label>
+    <input type="text" name="cedate" value="{{n.cedate}}" required>
+    <label for="exp">Event Time:-</label>
+    <input type="text" name="ctime" value="{{n.ctime}}" required>
+    <label for="exp">Apply Link:-</label>
+  <input type="text" name="capply" placeholder="Apply Google Excel Sheet Link" required>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 8 %}
+<hr>
+<form action="/delcourses/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Delete Courses<h1><center>
+    <p>Please fill in this form to Delete Courses data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.ctitle}}">{{n.ctitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+<hr>
+{% endif %}
+{% if id == 9 %}
+<hr>
+  {% for n in n %}
+  <p>
+      NGO Name:-{{n.ngoname}}<br>
+      NGO Details:-{{n.ngodetails}}<br>
+      Title:-{{n.ntitle}}<br>
+      description:-{{n.ndesc}}<br>
+      Document Link:-{{n.ndoclink}}<br>
+      Instructor:-{{n.niname}}<br>
+      Instructor description:-{{n.nidesc}}<br>
+      InstructorLink:-{{n.nilink}}<br>
+      Start Date:-{{n.nsdate}}<br>
+      End Date:-{{n.nedate}}<br>
+      Time:-{{n.ntime}}<br>
+      ApplyLink:-{{n.napply}}<br>
+    </p>
+    {% endfor %}
+<hr>
+{% endif %}
+{% if id == 10 %}
+<hr>
+<form action="/addngo/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Create NGO<h1><center>
+    <p>Please fill in this form to Create new NGO.</p>
+	<hr>
+  <div class="form-control">
+    </br></br>
+    <label for="fname">NGO Name:-</label>
+    <input type="text"  name="ngoname" placeholder="Enter NGO Name" required >
+	  <label for="lname">NGO details:-</label>
+    <input type="text"  name="ngodetails" placeholder="Enter NGO details" required>
+    <label for="fname">Event Title:-</label>
+    <input type="text"  name="ntitle" placeholder="Enter Event Title" required >
+	  <label for="lname">Event description:-</label>
+    <input type="text"  name="ndesc" placeholder="Enter Event description" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="ndoclink" placeholder="Event Documentation Link" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="niname" placeholder="Enter Instructor Name" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="nidesc" placeholder="Enter Instructor description" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="nilink" placeholder="Enter Instructor Profile Link" required>
+  <label for="exp">Event Start Date:-</label>
+  <input type="text" name="nsdate" placeholder="format:- (29-11-2020) " required>
+  <label for="exp">Event End Date:-</label>
+  <input type="text" name="nedate" placeholder="format:- (29-12-2020) " required>
+  <label for="exp">Event Time:-</label>
+  <input type="text" name="ntime" placeholder="format:- (10am to 4 pm)" required>
+  <label for="exp">Apply Link:-</label>
+  <input type="text" name="napply" placeholder="Apply Google Excel Sheet Link" required>
+<br><br><br>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 11 %}
+<hr>
+<form action="/upngo/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Update NGO<h1><center>
+    <p>Please fill in this form to Update NGO data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.ntitle}}">{{n.ntitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+    <label for="lname">NGO Name:-</label>
+    <input type="text"  name="ngoname" value="{{n.ngoname}}" required>
+    <label for="lname">NGO Details:-</label>
+    <input type="text"  name="ngodetails" value="{{n.ngodetails}}" required >
+	  <label for="lname">Event description:-</label>
+    <input type="text"  name="ndesc" value="{{n.ndesc}}" required>
+    <label for="lname">Event Document Link:-</label>
+    <input type="text"  name="ndoclink" value="{{n.ndoclink}}" required >
+    <label for="lname">Instructor Name:-</label>
+    <input type="text"  name="niname" value="{{n.niname}}" required>
+    <label for="lname">Instructor description:-</label>
+    <input type="text"  name="nidesc" value="{{n.nidesc}}" required>
+    <label for="sup">Instructor Profile Link :-</label>
+    <input type="text"  name="nilink" value="{{n.nilink}}" required>
+    <label for="exp">Event Start Date:-</label>
+    <input type="text" name="nsdate" value="{{n.nsdate}}" required>
+    <label for="exp">Event End Date:-</label>
+    <input type="text" name="nedate" value="{{n.nedate}}" required>
+    <label for="exp">Event Time:-</label>
+    <input type="text" name="ntime" value="{{n.ntime}}" required>
+    <label for="exp">Apply Link:-</label>
+  <input type="text" name="napply" placeholder="Apply Google Excel Sheet Link" required>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% if id == 12 %}
+<hr>
+<form action="/delngo/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Delete NGO<h1><center>
+    <p>Please fill in this form to Delete NGO data.</p>
+	<hr>
+  <div class="form-control">
+    <br><br><br>
+    	<label for="id">Choose Event option:</label>
+<select id="id" name="id">
+{% for n in n %}
+  <option value="{{n.ntitle}}">{{n.ntitle}}</option>
+ {% endfor %} 
+</select>
+<br><br><br>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+<hr>
+{% endif %}
+{% elif user.is_authenticated and user.userprofile.utype == "normal" %}
+<h1>You have logged in using User Account.please login using admin account.</h1>
+{% else %}
+<h1>Login First</h1>
+{% endif %}
+
+
+<footer class="footer">
+<div class="footer_top">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-2 col-md-3">
+<div class="footer_logo wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
+  <a href="/home/">
+<img src="{% static 'img/banner/8.jpeg' %}" alt="">
+</a>
+</div>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-9">
+<div class="menu_links">
+<ul>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".2s" href="/adminhome/">| home |</a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".4s" href="/adminemail/">| email System |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".6s" href="/admintrack/">| Tracking Data |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/adminevent/">| CRUD Event/Courses/NGO |</a></li>
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".8s" href="/adminngo/">| Enrollment |</a></li>
+{% if user.is_authenticated%}
+<li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.1s" href="/logout/">| Logout |</a></li>
+{% endif %}
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-12">
+<div class="socail_links">
+<ul>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" href="https://www.facebook.com/Reverse-Classroom-SPIT-103278271700626/"> <i class="fa fa-facebook"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" href="https://www.twitter.com/ReverseClassroom"> <i class="fa fa-twitter"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s" href="https://www.instagram.com/reverse_class_spit/"> <i class="fa fa-instagram"></i> </a></li>
+<li><a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s" href="mailto:reverse.classroom@spit.ac.in"> <i class="fa fa-google-plus"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="copy-right_text">
+<div class="container">
+<div class="footer_border"></div>
+<div class="row">
+<div class="col-xl-12">
+<p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
+
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>,Reverse Classroom Club. All rights reserved | Developed by <a href="https://www.linkedin.com/in/nikhil-dewoolkar-2b738b1b1/" target="_blank">Nikhil Dewoolkar</a>
+
+</p> 
+</div>
+</div>
+</div>
+</div> 
+</div>
+{% comment %} <div class="copy-right_text">
+<div class="container">
+<div class="footer_border"></div>
+<div class="row">
+<div class="col-xl-12"> {% endcomment %}
+{% comment %} <p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
+
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+
+</p> {% endcomment %}
+{% comment %} </div>
+</div>
+</div>
+</div> {% endcomment %}
+</footer>
+
+
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="{% static 'js/ajax-form.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/gijgo.min.js' %"></script>
+
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script async src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-23581568-13' %}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+</body>
+
+</html>
